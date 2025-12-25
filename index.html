@@ -23,26 +23,27 @@
   </div>
 
   <!-- Screen 2: Meme Reveal -->
- <div class="screen screen-2" id="screen2">
-  <div class="reveal-container">
-    <div class="loading-text" id="loadingText">Summoning Santa… 🎅</div>
-    <h1 class="greeting" id="greeting"></h1>
-    <p class="subtext">Santa hates you btw ✨</p>
+  <div class="screen screen-2" id="screen2">
+    <div class="reveal-container">
+      <h1 class="greeting" id="greeting"></h1>
+      <p class="subtext">Santa hates you btw ✨</p>
+      
+      <div class="loading-text" id="loadingText">Summoning Santa… 🎅</div>
+      
+      <div class="image-container" id="imageContainer" style="display: none;">
+        <img src="https://i.pinimg.com/736x/3c/25/5b/3c255b152928702098a07fa57912e20a.jpg" alt="Christmas Meme" class="rotating-image" id="rotatingImage">
+      </div>
 
-    <div class="image-container">
-      <!-- Rotating image -->
-      <img id="rotatingImage" class="rotating-image" 
-           src="data:image/jpeg;base64,...your image..." 
-           alt="Santa Cat" />
+      <p class="subtext" id="subtext1" style="display: none;">why did you survive 2025? 🔥</p>
+      <p class="subtext" id="subtext2" style="display: none;">die</p>
+
+      <!-- Floating Emojis -->
+      <div class="floating-emoji emoji-1">🎄</div>
+      <div class="floating-emoji emoji-2">🎅</div>
+      <div class="floating-emoji emoji-3">✨</div>
+      <div class="floating-emoji emoji-4">🔥</div>
     </div>
-
-    <!-- Floating Emojis -->
-    <div class="floating-emoji emoji-1">🎄</div>
-    <div class="floating-emoji emoji-2">🎅</div>
-    <div class="floating-emoji emoji-3">✨</div>
-    <div class="floating-emoji emoji-4">🔥</div>
   </div>
-</div>
 
   <!-- Music Toggle Button -->
   <button class="music-toggle" id="musicToggle">🔊 vibes ON</button>
@@ -54,5 +55,4 @@
 
   <script src="script.js"></script>
 </body>
-
 </html>
