@@ -48,7 +48,6 @@ nameInput.addEventListener('keypress', (e) => {
 submitBtn.addEventListener('click', handleSubmit);
 
 // MAIN SUBMISSION FUNCTION
-// This handles: name validation, screen transition, and music start
 function handleSubmit() {
   const name = nameInput.value.trim();
 
@@ -67,15 +66,22 @@ function handleSubmit() {
   // Hide Screen 1
   screen1.style.display = 'none';
 
-  // Show Screen 2 with transition
-  screen2.classList.add('active');
+  // Show Screen 2 - FIXED: Set display first, then trigger transition
   screen2.style.display = 'flex';
+  
+  // Force browser reflow before adding active class
+  screen2.offsetHeight;
+  
+  // Now add active class to trigger transition
+  setTimeout(() => {
+    screen2.classList.add('active');
+  }, 10);
 
   // Show greeting immediately
   greeting.textContent = `Merry Christmas, ${userName} 🎄`;
   greeting.style.display = 'block';
 
-  // Show loading message and image after delay
+  // Show image and remaining text after delay
   setTimeout(() => {
     loadingText.style.display = 'none';
     imageContainer.style.display = 'block';
@@ -83,19 +89,14 @@ function handleSubmit() {
     subtext2.style.display = 'block';
   }, 1500);
 
-  // ==========================================
-  // START MUSIC PLAYBACK HERE
-  // Music starts ONLY after name submission
-  // ==========================================
+  // Start music playback
   setTimeout(() => {
-    bgMusic.volume = 0.3; // Set low volume
+    bgMusic.volume = 0.3;
     bgMusic.play().then(() => {
       isMusicPlaying = true;
-      musicToggle.classList.add('show'); // Show music toggle button
+      musicToggle.classList.add('show');
     }).catch((err) => {
-      // Handle autoplay restrictions
       console.log('Autoplay prevented:', err);
-      // Show toggle button anyway so user can manually start
       musicToggle.classList.add('show');
     });
   }, 1000);
@@ -121,7 +122,6 @@ musicToggle.addEventListener('click', () => {
 
 // ==========================================
 // IMAGE ERROR HANDLER
-// If image doesn't load, show placeholder
 // ==========================================
 const rotatingImage = document.getElementById('rotatingImage');
 rotatingImage.addEventListener('error', () => {
@@ -140,14 +140,3 @@ rotatingImage.addEventListener('error', () => {
   placeholder.textContent = '🎄';
   rotatingImage.parentElement.appendChild(placeholder);
 });
-```
-
----
-
-## 📁 **Final Folder Structure**
-```
-📁 christmas-meme-site/
-├── 📄 index.html
-├── 🎨 style.css
-├── ⚙️ script.js
-└── 🎵 christmas-music.mp3  (your music file)
