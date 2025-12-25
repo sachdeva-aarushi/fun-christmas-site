@@ -1,2 +1,2 @@
 # fun-christmas-site
-fun christmas website
+fun christmas website. very silly project
